@@ -71,7 +71,7 @@
             nuxt
             to="/inspire"
           >
-            Continue
+            {{ message }}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -87,6 +87,11 @@ export default {
   components: {
     Logo,
     VuetifyLogo
+  },
+  data() {
+    return {
+      message: process.env.TEST
+    }
   }
 }
 </script>
