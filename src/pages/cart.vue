@@ -1,5 +1,5 @@
 <template>
-  <p> TastyCloud Test </p>
+  <p> Under construction </p>
 </template>
 
 <script>
