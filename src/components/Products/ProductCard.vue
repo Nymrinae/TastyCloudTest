@@ -1,25 +1,14 @@
 <template>
-  <v-card class="mb-3">
-    <v-img
-      width="400"
-      height="150"
-      :src="require('../../../assets/thumbnail.png')"
-    >
-    </v-img>
-    <v-card-subtitle class="pb-0 italic" style="font-family: Georgia;">
-      A field I don't know if it's going to be useful
-    </v-card-subtitle>
-    <v-card-title class="newsTitle">
-      {{ this.name }}
-    </v-card-title>
-    <v-card-text class="text--primary" style="position: relative;">
-      <div> {{ this.description }} </div>
+  <v-card class="mb-3" width="400" height="400">
+    <v-img :src="require('../../../assets/thumbnail.png')" />
+    <v-card-text class="pt-4" style="position: relative;">
+      <v-btn absolute color="orange" class="white--text" fab medium right top>
+        <v-icon>mdi-cart</v-icon>
+      </v-btn>
+      <v-card-subtitle class="display-1 font-weight-light orange--text mb-2">{{this.name}}</v-card-subtitle>
+      <v-divider />
+      <v-card-subtitle class="font-weight-light mb-2">{{this.description}}</v-card-subtitle>
     </v-card-text>
-    <v-card-actions>
-      <v-text class="price"> {{ this.price }}€ </v-text>
-      <v-spacer />
-      <v-btn text>Add to cart</v-btn>
-    </v-card-actions>
   </v-card>
 </template>
 
