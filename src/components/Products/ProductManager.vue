@@ -1,22 +1,37 @@
 <template>
-  <v-flex xs12 md12>
-    <v-tabs grow>
+  <v-card>
+    <v-card-title class="text-center justify-center py-6">
+      <h1 class="font-weight-bold display-3">Nos Produits</h1>
+    </v-card-title>
+
+    <v-tabs
+      v-model="tab"
+      background-color="transparent"
+      color="basil"
+      grow
+    >
       <v-tab
-        v-for="type in types"
-        :key="type"
-        :href="`#tab-${type}`"
+        v-for="item in items"
+        :key="item"
       >
-      {{ type }}
+        {{ item.name }}
       </v-tab>
-      <v-tab-item
-        v-for="type in types"
-        :key="type"
-        :value="`tab-${type}`"
-      >
-        <ProductHandler :type="type" />
-      </v-tab-item>
     </v-tabs>
-  </v-flex>
+
+    <v-tabs-items v-model="tab">
+      <v-tab-item
+        v-for="item in items"
+        :key="item"
+      >
+        <v-card
+          color="basil"
+          flat
+        >
+          <ProductHandler :type="item.id" />
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
+  </v-card>
 </template>
 
 <script>
@@ -28,8 +43,32 @@ export default {
   },
   data() {
     return {
-      types: ['meals', 'desserts', 'drinks']
+      tab: null,
+      items: [
+        { id: 'meals', name: 'plats' }, 
+        { id: 'desserts', name: 'desserts' },
+        { id: 'drinks', name: 'boissons' }
+      ],
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     }
   }
 }
 </script>
+
+
+<!-- <script>
+import ProductHandler from './ProductHandler'
+
+export default {
+  components: {
+    ProductHandler
+  },
+  data() {
+    return {
+      tab: null,
+      types: ['meals', 'desserts', 'drinks']
+    }
+  }
+}
+</script> -->
+

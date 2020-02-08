@@ -1,5 +1,5 @@
 <template>
-  <v-footer app>
+  <v-footer>
     <v-col class="white--text text-center">
       {{ `${companyName} &copy; ${new Date().getFullYear()}` }}
     </v-col>
@@ -10,7 +10,7 @@
 export default {
   data() {
     return {
-    companyName: 'COMPANY_NAME'
+      companyName: 'COMPANY_NAME'
     }
   }
 }
