@@ -1,10 +1,33 @@
 import { db } from '../plugins/firebase'
 
-const mealsRef = db.collection('meals')
-const dessertsRef = db.collection('desserts')
-const drinksRef = db.collection('drinks')
+export const getItems = async type => {
+  const items = []
+  const mealsRef = db.collection('meals')
+  const dessertsRef = db.collection('desserts')
+  const drinksRef = db.collection('drinks')
 
-export const getMealByName = async mealName => {
+  let res = null
+
+  switch(type) {
+    case 'meals':
+      res = await mealsRef.get()
+      break
+    case 'drinks':
+      res = await drinksRef.get()
+      break
+    case 'desserts':
+      res = await dessertsRef.get()
+      break
+    default:
+      break
+  }
+
+  res.forEach(item => items.push(item.data()))
+
+  return items
+}
+
+/* export const getMealByName = async mealName => {
   let query = mealsRef.where('name', '==', mealName)
 }
 
@@ -41,27 +64,4 @@ export const getAllDrinks = async () => {
   allDrinks.forEach(item => drinks.push(item.data()))
 
   return drinks
-}
-
-export const getItems = async type => {
-  const items = []
-  let res = null
-
-  switch(type) {
-    case 'meals':
-      res = await mealsRef.get()
-      break
-    case 'drinks':
-      res = await drinksRef.get()
-      break
-    case 'desserts':
-      res = await dessertsRef.get()
-      break
-    default:
-      break
-  }
-
-  res.forEach(item => items.push(item.data()))
-
-  return items
-}
+} */
