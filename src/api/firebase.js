@@ -1,11 +1,10 @@
 import { db } from '../plugins/firebase'
 
-export const getItems = async type => {
-  const items = []
-  const mealsRef = db.collection('meals')
-  const dessertsRef = db.collection('desserts')
-  const drinksRef = db.collection('drinks')
+const mealsRef = db.collection('meals')
+const dessertsRef = db.collection('desserts')
+const drinksRef = db.collection('drinks')
 
+export const getItems = async type => {
   let res = null
 
   switch(type) {
@@ -22,9 +21,19 @@ export const getItems = async type => {
       break
   }
 
-  res.forEach(item => items.push(item.data()))
+  return res.docs.map(item => item.data())
+}
 
-  return items
+export const getAllItems = async type => {
+  let meals = await mealsRef.get()
+  let desserts = await dessertsRef.get()
+  let drinks = await drinksRef.get()
+
+  meals = meals.docs.map(item => item.data())
+  desserts = desserts.docs.map(item => item.data())
+  drinks = drinks.docs.map(item => item.data())
+
+  return [...meals, ...desserts, ...drinks]
 }
 
 /* export const getMealByName = async mealName => {

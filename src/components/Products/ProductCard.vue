@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mb-3" width="400" height="400">
+  <v-card class="mb-3" width="400" height="350">
     <v-img :src="require('../../../assets/thumbnail.png')" />
     <v-card-text class="pt-4" style="position: relative;">
       <v-btn absolute color="orange" class="white--text" fab medium right top>
