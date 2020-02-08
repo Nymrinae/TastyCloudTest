@@ -10,7 +10,7 @@ export const getMealByName = async mealName => {
 
 export const getAllMeals = async () => {
   const meals = []
-  let allMeals = await mealsRef.get()
+  const allMeals = await mealsRef.get()
 
   allMeals.forEach(item => meals.push(item.data()))
 
@@ -21,14 +21,47 @@ export const geatDessertByName = async dessertName => {
 
 }
 
-export const getAllDesserts = () => {
+export const getAllDesserts = async () => {
+  const desserts = []
+  const allDesserts = await dessertsRef.get()
 
+  allDesserts.forEach(item => desserts.push(item.data()))
+
+  return desserts
 }
 
 export const getDrinkByName = async drinkName => {
 
 }
 
-export const getAllDrinks = () => {
+export const getAllDrinks = async () => {
+  const drinks = []
+  const allDrinks = await drinksRef.get()
 
+  allDrinks.forEach(item => drinks.push(item.data()))
+
+  return drinks
+}
+
+export const getItems = async type => {
+  const items = []
+  let res = null
+
+  switch(type) {
+    case 'meals':
+      res = await mealsRef.get()
+      break
+    case 'drinks':
+      res = await drinksRef.get()
+      break
+    case 'desserts':
+      res = await dessertsRef.get()
+      break
+    default:
+      break
+  }
+
+  res.forEach(item => items.push(item.data()))
+
+  return items
 }

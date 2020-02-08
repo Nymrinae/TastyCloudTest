@@ -2,43 +2,38 @@
   <v-container grid-list lg>
     <v-row>
       <ProductCard
-        v-for="meal in meals"
-        :key="meal"
-        :name="meal.name"
-        :description="meal.description"
-        :price="meal.price"
-        :thumbnail="meal.thumbnail"
+        v-for="item in items"
+        :key="item"
+        :name="item.name"
+        :description="item.description"
+        :price="item.price"
+        :thumbnail="item.thumbnail"
         style="margin: 20px;"
-      />
+      /> <!-- the margin should be applied only on lg -->
     </v-row>
   </v-container>
 </template>
 
 <script>
 import ProductCard from './ProductCard'
-import { getAllMeals, getAllDesserts, getAllDrinks } from '../../api/firebase'
+import { getItems } from '../../api/firebase'
 
 export default {
   components: {
     ProductCard
   },
+  props: {
+    type: { type: String, required: true }
+  },
   data() {
     return {
-      meals: [],
-      desserts: [],
-      drinks: []
+      items: []
     }
   },
   async created() {
-    const meals = await getAllMeals()
-    const desserts = await getAllDesserts()
-    const drinks = await getAllDrinks()
+    const items = await getItems(this.type)
 
-    this.meals = meals
-    this.desserts = desserts
-    this.drinks = drinks
-
-    console.log(this.meals[0])
+    this.items = items
   }
 }
 </script>

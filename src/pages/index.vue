@@ -4,8 +4,23 @@
     justify-center
     align-center
   >
-    <v-flex xs12 sm8 md6>
-      <ProductHandler />
+    <v-flex xs12 md12>
+      <v-tabs grow>
+        <v-tab
+          v-for="type in types"
+          :key="type"
+          :href="`#tab-${type}`"
+        >
+        {{ type }}
+        </v-tab>
+        <v-tab-item
+          v-for="type in types"
+          :key="type"
+          :value="`tab-${type}`"
+        >
+          <ProductHandler :type="type"/>
+        </v-tab-item>
+      </v-tabs>
     </v-flex>
   </v-layout>
 </template>
@@ -19,6 +34,7 @@ export default {
   },
   data() {
     return {
+      types: ['meals', 'desserts', 'drinks']
     }
   }
 }
