@@ -3,7 +3,7 @@
     <h1 class="font-weight-bold display-1 text-center justify-center py-6">
       Panier
     </h1>
-    <v-list>
+    <v-list v-if="items.length">
       <CartItem
         v-for="item in items"
         :key="item"
@@ -14,6 +14,9 @@
         :thumbnail="item.thumbnail"
       />
     </v-list>
+    <p v-else class="text-center justify-center ">
+      Votre panier est vide!
+    </p>
   </v-container>
 </template>
 
