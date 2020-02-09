@@ -12,9 +12,16 @@
         right
         top
       >
-        <v-icon>{{ this.id }}</v-icon>
+        <v-icon>mdi-cart</v-icon>
       </v-btn>
-      <v-card-subtitle class="display-1 font-weight-light orange--text mb-2">{{this.name}}</v-card-subtitle>
+      <v-row>
+        <v-col cols="8">
+          <v-card-subtitle class="title font-weight-light amber--text">{{this.name}}</v-card-subtitle>
+        </v-col>
+        <v-col cols="4">
+          <v-card-subtitle class="title font-weight-light orange--text">{{this.price}} €</v-card-subtitle>
+        </v-col>
+      </v-row>
       <v-divider />
       <v-card-subtitle class="font-weight-light mb-2">{{this.description}}</v-card-subtitle>
     </v-card-text>
