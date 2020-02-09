@@ -9,7 +9,7 @@
         :description="item.description"
         :price="item.price"
         :thumbnail="item.thumbnail"
-        style="margin: 20px;"
+        style="margin: 10px;"
       /> <!-- the margin should be applied only on lg -->
     </v-row>
   </v-container>
@@ -17,7 +17,7 @@
 
 <script>
 import ProductCard from './ProductCard'
-import { getItems, getAllItems } from '../../api/firebase'
+import { getAllItems, getItems } from '../../api/firebase'
 
 export default {
   components: {

@@ -4,13 +4,7 @@
     justify-center
     align-center
   >
-    <v-row>
-      <v-col cols="2">
-      </v-col>
-      <v-col cols="10">
-        <ProductManager />
-      </v-col>
-    </v-row>
+    <ProductManager />
   </v-layout>
 </template>
 

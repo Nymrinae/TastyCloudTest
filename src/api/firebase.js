@@ -17,11 +17,14 @@ export const getItems = async type => {
     case 'desserts':
       res = await dessertsRef.get()
       break
+    case 'all':
+      res = await getAllItems()
+      break
     default:
       break
   }
 
-  return res.docs.map(item => item.data())
+  return type === 'all' ? res : res.docs.map(item => item.data())
 }
 
 export const getAllItems = async () => {
@@ -34,10 +37,6 @@ export const getAllItems = async () => {
   drinks = drinks.docs.map(item => item.data())
 
   return [...meals, ...desserts, ...drinks]
-}
-
-export const getItem = async id => {
-  const items = await getAllItems()
 }
 
 /* export const getMealByName = async mealName => {

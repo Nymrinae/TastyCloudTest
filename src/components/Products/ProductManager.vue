@@ -41,6 +41,7 @@ export default {
     return {
       tab: null,
       items: [
+        { id: 'all', name: 'all' },
         { id: 'meals', name: 'plats' }, 
         { id: 'desserts', name: 'desserts' },
         { id: 'drinks', name: 'boissons' }
