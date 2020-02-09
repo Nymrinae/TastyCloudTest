@@ -1,4 +1,4 @@
-import { getItems } from '../api/firebase'
+import { getAllItems } from '../api/firebase'
 
 const state = () => ({
   cart: []
@@ -18,7 +18,20 @@ const mutations = {
 }
 
 const actions = {
-  fetchItem: itemId => {
+  async addItemToCart({ commit }, id) {
+    const items = await getAllItems()
+
+    const item = items.filter(elem => elem.id === id)
+    console.log(item)
+
+    try {
+      commit('pushItemToCart', item)
+    } catch (e) {
+      return false
+    }
+  },
+  async removeItemFromCart({ commit }, id) {
+
   }
 }
 

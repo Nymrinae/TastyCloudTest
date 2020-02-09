@@ -9,7 +9,7 @@
         :to="item.path"
         style="toolbarItem"
       >
-        {{ item.name }}
+        {{ `${item.name} ${item.isModifiable ? `(${cart.length})` : '' }`}}
       </v-btn>
     </v-toolbar-items>
   </v-app-bar>
@@ -23,8 +23,13 @@ export default {
       links: [
         { name: 'Home', path: '/' },
         { name: 'Nos produits', path: '/products'},
-        { name: 'Panier', path: '/cart' }
+        { name: `Panier`, path: '/cart', isModifiable: true }
       ]
+    }
+  },
+  computed: {
+    cart() {
+      return this.$store.getters['cart/getCart']
     }
   }
 }

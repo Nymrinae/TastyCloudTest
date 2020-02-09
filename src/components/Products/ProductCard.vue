@@ -2,8 +2,17 @@
   <v-card class="mb-3" width="400" height="350">
     <v-img :src="require('../../../assets/thumbnail.png')" />
     <v-card-text class="pt-4" style="position: relative;">
-      <v-btn absolute color="orange" class="white--text" fab medium right top>
-        <v-icon>mdi-cart</v-icon>
+      <v-btn
+        v-on:click="addItem"
+        absolute
+        class="white--text"
+        color="orange"
+        fab
+        medium
+        right
+        top
+      >
+        <v-icon>{{ this.id }}</v-icon>
       </v-btn>
       <v-card-subtitle class="display-1 font-weight-light orange--text mb-2">{{this.name}}</v-card-subtitle>
       <v-divider />
@@ -13,14 +22,25 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   components: {
   },
   props: {
+    id: { type: String, required: true },
     name: { type: String, required: true },
     description: { type: String, required: true },
     price: { type: Number, required: true },
     thumbnail: { type: String, required: true }
+  },
+  methods: {
+    ...mapActions({ 
+      addItemToCart: 'cart/addItemToCart'
+    }),
+    async addItem() {
+      await this.addItemToCart(this.id)
+    }
   }
 }
 </script>

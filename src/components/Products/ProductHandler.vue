@@ -4,6 +4,7 @@
       <ProductCard
         v-for="item in items"
         :key="item"
+        :id="item.id"
         :name="item.name"
         :description="item.description"
         :price="item.price"
@@ -16,7 +17,7 @@
 
 <script>
 import ProductCard from './ProductCard'
-import { getItems } from '../../api/firebase'
+import { getItems, getAllItems } from '../../api/firebase'
 
 export default {
   components: {

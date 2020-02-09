@@ -24,7 +24,7 @@ export const getItems = async type => {
   return res.docs.map(item => item.data())
 }
 
-export const getAllItems = async type => {
+export const getAllItems = async () => {
   let meals = await mealsRef.get()
   let desserts = await dessertsRef.get()
   let drinks = await drinksRef.get()
@@ -34,6 +34,10 @@ export const getAllItems = async type => {
   drinks = drinks.docs.map(item => item.data())
 
   return [...meals, ...desserts, ...drinks]
+}
+
+export const getItem = async id => {
+  const items = await getAllItems()
 }
 
 /* export const getMealByName = async mealName => {
