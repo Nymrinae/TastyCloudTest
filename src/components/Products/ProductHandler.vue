@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list lg>
+  <v-container class="container" grid-list lg >
     <v-row>
       <ProductCard
         v-for="item in items"
@@ -9,7 +9,7 @@
         :description="item.description"
         :price="item.price"
         :thumbnail="item.thumbnail"
-        style="margin: 10px;"
+        class="productCard"
       /> <!-- the margin should be applied only on lg -->
     </v-row>
   </v-container>
@@ -17,7 +17,7 @@
 
 <script>
 import ProductCard from './ProductCard'
-import { getAllItems, getItems } from '../../api/firebase'
+import { getMeals, getDrinks, getDesserts, getAllItems } from '../../api/firebase'
 
 export default {
   components: {
@@ -32,7 +32,22 @@ export default {
     }
   },
   async created() {
-    const items = await getItems(this.type)
+    let items = null
+
+    switch(this.type) {
+      case 'meals':
+        items = await getMeals()
+        break
+      case 'drinks':
+        items = await getDrinks()
+        break
+      case 'desserts':
+        items = await getDesserts()
+        break
+      case 'all':
+        items = await getAllItems()
+        break
+    }
 
     this.items = items
   }
@@ -40,5 +55,10 @@ export default {
 </script>
 
 <style>
-
+.container {
+  margin-bottom: 50px;
+}
+.productCard {
+  margin: 20px 20px 0px 25px
+}
 </style>

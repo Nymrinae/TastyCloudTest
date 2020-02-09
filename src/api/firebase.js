@@ -7,6 +7,18 @@ export const getMeals = async () => {
   return res.docs.map(item => item.data())
 }
 
+export const getMealOfTheDay = async () => {
+  const meals = await getMeals()
+
+  return meals[Math.floor(Math.random() * meals.length)]
+}
+
+export const getDessertOfTheDay = async () => {
+  const desserts = await getDesserts()
+
+  return desserts[Math.floor(Math.random() * desserts.length)]
+}
+
 export const getDesserts = async () => {
   const dessertsRef = db.collection('desserts')
   const res = await dessertsRef.get()
@@ -21,37 +33,10 @@ export const getDrinks = async () => {
   return res.docs.map(item => item.data())
 }
 
-export const getItems = async type => {
-  let res = null
-
-  switch(type) {
-    case 'meals':
-      res = await getMeals()
-      break
-    case 'drinks':
-      res = await getDrinks()
-      break
-    case 'desserts':
-      res = await getDesserts()
-      break
-    case 'all':
-      res = await getAllItems()
-      break
-    default:
-      break
-  }
-
-  return res
-}
-
 export const getAllItems = async () => {
   let meals = await getMeals()
   let desserts = await getDesserts()
   let drinks = await getDrinks()
 
   return [...meals, ...desserts, ...drinks]
-}
-
-export const getMealOfTheDay = async () => {
-
 }

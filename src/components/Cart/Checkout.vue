@@ -16,7 +16,7 @@ export default {
     total() {
       const cart =this.$store.getters['cart/getCart']
 
-      return cart.map(item => item.price).reduce((acc, next) => acc + next)
+      return Math.round(cart.map(item => item.price).reduce((acc, next) => acc + next) * 100) / 100
     }
   }
 }
