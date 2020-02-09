@@ -1,6 +1,6 @@
 <template>
   <v-card class="mb-3" width="400" height="350">
-    <v-img :src="require('../../../assets/thumbnail.png')" />
+    <v-img height="150" width="400" :src="this.thumbnail"/>
     <v-card-text class="pt-4" style="position: relative;">
       <v-btn
         v-on:click="addItem"
