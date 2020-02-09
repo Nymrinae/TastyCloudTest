@@ -12,8 +12,8 @@ const mutations = {
   pushItemToCart: (state, item) => {
     state.cart.push(item)
   },
-  removeItemFromCart: (state, item) => {
-    state.cart.splice(item, 1)
+  removeItemFromCart: (state, id) => {
+    state.cart = state.cart.filter(e => e.id != id)
   }
 }
 
@@ -22,16 +22,19 @@ const actions = {
     const items = await getAllItems()
 
     const item = items.filter(elem => elem.id === id)
-    console.log(item)
 
     try {
-      commit('pushItemToCart', item)
+      commit('pushItemToCart', item[0])
     } catch (e) {
       return false
     }
   },
   async removeItemFromCart({ commit }, id) {
-
+    try {
+      commit('removeItemFromCart', id)
+    } catch (e) {
+      return false
+    }
   }
 }
 

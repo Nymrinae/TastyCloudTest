@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="text-center justify-center py-6">
-      <h1 class="font-weight-bold display-3">Nos Produits</h1>
+      <h1 class="font-weight-bold display-1">Nos Produits</h1>
     </v-card-title>
     <v-tabs
       v-model="tab"
@@ -51,21 +51,4 @@ export default {
   }
 }
 </script>
-
-
-<!-- <script>
-import ProductHandler from './ProductHandler'
-
-export default {
-  components: {
-    ProductHandler
-  },
-  data() {
-    return {
-      tab: null,
-      types: ['meals', 'desserts', 'drinks']
-    }
-  }
-}
-</script> -->
 
