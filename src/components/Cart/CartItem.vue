@@ -7,14 +7,21 @@
       <v-list-item-title v-text="this.name"/>
       <v-list-item-subtitle v-text="this.description"/>
     </v-list-item-content>
-    <v-list-item-icon>
-      <v-btn
-        @click="this.removeItem"
-        icon
-      >
-        <v-icon color="red">mdi-delete</v-icon>
-      </v-btn>
-    </v-list-item-icon>
+    <v-list-tile
+      v-text="this.price + '€'"
+      class="title font-weight-light orange--text"
+      style="margin-right: 20px"
+    />
+    <v-list-tile>
+      <v-list-item-icon>
+        <v-btn
+          @click="this.removeItem"
+          icon
+        >
+          <v-icon color="red">mdi-delete</v-icon>
+        </v-btn>
+      </v-list-item-icon>
+    </v-list-tile>
   </v-list-item>
 </template>
 

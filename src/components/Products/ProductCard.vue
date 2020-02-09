@@ -19,7 +19,7 @@
           <v-card-subtitle class="title font-weight-light amber--text">{{this.name}}</v-card-subtitle>
         </v-col>
         <v-col cols="4">
-          <v-card-subtitle class="title font-weight-light orange--text">{{this.price}} €</v-card-subtitle>
+          <v-card-subtitle class="title font-weight-bold orange--text">{{this.price}} €</v-card-subtitle>
         </v-col>
       </v-row>
       <v-divider />

@@ -13,19 +13,21 @@
         :price="item.price"
         :thumbnail="item.thumbnail"
       />
+      <Checkout />
     </v-list>
-    <p v-else class="text-center justify-center ">
+    <p v-else class="text-center justify-center">
       Votre panier est vide!
     </p>
   </v-container>
 </template>
 
 <script>
-import { CartItem } from '../components'
+import { CartItem, Checkout } from '../components'
 
 export default {
   components: {
-    CartItem
+    CartItem,
+    Checkout
   },
   computed: {
     items() {
