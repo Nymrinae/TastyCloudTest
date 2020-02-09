@@ -25,13 +25,17 @@ const actions = {
 
     try {
       commit('pushItemToCart', item[0])
+
+      return true
     } catch (e) {
       return false
     }
   },
-  async removeItemFromCart({ commit }, id) {
+  removeItemFromCart({ commit }, id) {
     try {
       commit('removeItemFromCart', id)
+
+      return true
     } catch (e) {
       return false
     }

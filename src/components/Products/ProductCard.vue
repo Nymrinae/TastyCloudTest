@@ -25,6 +25,15 @@
       <v-divider />
       <v-card-subtitle class="font-weight-light mb-2">{{this.description}}</v-card-subtitle>
     </v-card-text>
+    <v-snackbar
+      v-model="show"
+      color="green"
+      timeout="5000"
+      top
+    >
+      {{ this.name }} ajouté au panier !
+      <v-btn dark text @click="show = false"> Fermer </v-btn>
+    </v-snackbar>
   </v-card>
 </template>
 
@@ -32,8 +41,9 @@
 import { mapActions } from 'vuex'
 
 export default {
-  components: {
-  },
+  data: () => ({
+    show: false
+  }),
   props: {
     id: { type: String, required: true },
     name: { type: String, required: true },
@@ -46,11 +56,11 @@ export default {
       addItemToCart: 'cart/addItemToCart'
     }),
     async addItem() {
-      await this.addItemToCart(this.id)
+      this.show = await this.addItemToCart(this.id)
     }
   }
 }
-</script>
+</script> 
 
 <style>
 .italic {

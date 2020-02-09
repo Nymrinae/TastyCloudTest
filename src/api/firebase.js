@@ -1,21 +1,38 @@
 import { db } from '../plugins/firebase'
 
-const mealsRef = db.collection('meals')
-const dessertsRef = db.collection('desserts')
-const drinksRef = db.collection('drinks')
+export const getMeals = async () => {
+  const mealsRef = db.collection('meals')
+  const res = await mealsRef.get()
+
+  return res.docs.map(item => item.data())
+}
+
+export const getDesserts = async () => {
+  const dessertsRef = db.collection('desserts')
+  const res = await dessertsRef.get()
+
+  return res.docs.map(item => item.data())
+}
+
+export const getDrinks = async () => {
+  const drinksRef = db.collection('drinks')
+  const res = await drinksRef.get()
+
+  return res.docs.map(item => item.data())
+}
 
 export const getItems = async type => {
   let res = null
 
   switch(type) {
     case 'meals':
-      res = await mealsRef.get()
+      res = await getMeals()
       break
     case 'drinks':
-      res = await drinksRef.get()
+      res = await getDrinks()
       break
     case 'desserts':
-      res = await dessertsRef.get()
+      res = await getDesserts()
       break
     case 'all':
       res = await getAllItems()
@@ -24,17 +41,17 @@ export const getItems = async type => {
       break
   }
 
-  return type === 'all' ? res : res.docs.map(item => item.data())
+  return res
 }
 
 export const getAllItems = async () => {
-  let meals = await mealsRef.get()
-  let desserts = await dessertsRef.get()
-  let drinks = await drinksRef.get()
-
-  meals = meals.docs.map(item => item.data())
-  desserts = desserts.docs.map(item => item.data())
-  drinks = drinks.docs.map(item => item.data())
+  let meals = await getMeals()
+  let desserts = await getDesserts()
+  let drinks = await getDrinks()
 
   return [...meals, ...desserts, ...drinks]
+}
+
+export const getMealOfTheDay = async () => {
+
 }

@@ -23,6 +23,15 @@
       </v-list-item-icon>
     </v-list-tile>
   </v-list-item>
+  <!-- <v-snackbar
+    v-model="show"
+    color="red"
+    timeout="5000"
+    top
+  >
+    {{ this.name }} supprimé du panier !
+    <v-btn dark text @click="show = false"> Fermer </v-btn>
+  </v-snackbar> -->
 </template>
 
 <script>
@@ -36,11 +45,14 @@ export default {
     price: { type: String, required: true },
     thumbnail: { type: String, required: true }
   },
+  data: () => ({
+    // show: false
+  }),
   methods: {
     ...mapActions({
       removeItemFromCart: 'cart/removeItemFromCart'
     }),
-    removeItem() {
+    async removeItem() {
       this.removeItemFromCart(this.id)
     }
   }
