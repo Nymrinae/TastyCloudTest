@@ -7,13 +7,13 @@ export const getMeals = async () => {
   return res.docs.map(item => item.data())
 }
 
-export const getMealOfTheDay = async () => {
+export const getMeal = async () => {
   const meals = await getMeals()
 
   return meals[Math.floor(Math.random() * meals.length)]
 }
 
-export const getDessertOfTheDay = async () => {
+export const getDessert = async () => {
   const desserts = await getDesserts()
 
   return desserts[Math.floor(Math.random() * desserts.length)]
@@ -39,4 +39,19 @@ export const getAllItems = async () => {
   let drinks = await getDrinks()
 
   return [...meals, ...desserts, ...drinks]
+}
+
+export const getNews = async () => {
+  const items = []
+
+  while (items.length != 4) {
+    const meal = await getMeal()
+    const dessert = await getDessert()
+    const item = Math.random() > 0.5 ? meal : dessert
+
+    if (!items.some(elem => elem.id === item.id)) // avoid duplicates
+      items.push(item)
+  }
+
+  return items
 }
