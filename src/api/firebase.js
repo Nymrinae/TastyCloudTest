@@ -1,16 +1,16 @@
 import { db } from '../plugins/firebase'
 
+export const getMeal = async () => {
+  const meals = await getMeals()
+
+  return meals[Math.floor(Math.random() * meals.length)]
+}
+
 export const getMeals = async () => {
   const mealsRef = db.collection('meals')
   const res = await mealsRef.get()
 
   return res.docs.map(item => item.data())
-}
-
-export const getMeal = async () => {
-  const meals = await getMeals()
-
-  return meals[Math.floor(Math.random() * meals.length)]
 }
 
 export const getDessert = async () => {

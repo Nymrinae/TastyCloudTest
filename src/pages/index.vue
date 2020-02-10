@@ -4,7 +4,7 @@
       Bienvenue sur le site de COMPANY_NAME
     </h1>
     <h3 class="font-weight-bold display- mt-8">
-      Technical test for @TastyCloud
+      Test technique pour @TastyCloud
     </h3>
     <h1 class="font-weight-bold display-1 mt-8 mt-8"> Nouveautés: </h1>
     <v-row>
